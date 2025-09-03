@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leviora Edu Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals & Accents (Customized) -->
+    <!-- Application Structure Plan: The application is designed as a single-page interactive journey. A core horizontal flowchart visually represents the six stages of engagement. Clicking on each stage in the flowchart smoothly scrolls the user to a corresponding, detailed section below. Each section features a toggleable view to switch between the 'Students / Professionals' and 'Companies / Employers' perspectives, presenting the specific actions and outcomes for each user type. This structure was chosen to provide both a high-level overview and deep-dive functionality on a single, easy-to-navigate page, making the complex dual-sided flow understandable and digestible. -->
+    <!-- Visualization & Content Choices: 
+        - Flowchart: Goal: Organize -> Viz: HTML/CSS/Tailwind Flow Diagram -> Interaction: Clickable stages that scroll to sections -> Justification: Clearly visualizes the sequential process without requiring external libraries. CONFIRM: NO SVG/Mermaid.
+        - Engagement Metrics: Goal: Inform/Compare -> Viz: Bar Chart (Chart.js) -> Interaction: Static, illustrative data -> Justification: Quickly demonstrates potential outcomes in a small, non-intrusive format. CONFIRM: NO SVG/Mermaid.
+        - Content Blocks: Goal: Inform -> Viz: Dynamic text containers -> Interaction: Toggle switch to show different user perspectives -> Justification: Efficiently presents a large amount of information for two different user types in a single space. CONFIRM: NO SVG/Mermaid.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #3D3B30;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="container mx-auto px-4 py-12 md:py-24">
+        <header class="text-center max-w-4xl mx-auto mb-16">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-amber-700">Leviora Edu: A Dual-Sided Platform Flow</h1>
+            <p class="mt-4 text-lg md:text-xl text-gray-600">Explore the seamless journey for both students and companies, from initial onboarding to long-term growth and career success.</p>
+        </header>
+
+        <section id="flowchart" class="mb-16">
+            <div class="flex flex-col md:flex-row justify-between items-center relative">
+                <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-0 right-0 h-1 bg-amber-200"></div>
+                <div class="absolute top-1/2 -translate-y-1/2 w-full md:hidden h-full">
+                    <div class="h-full w-1 bg-amber-200 mx-auto"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between w-full space-y-8 md:space-y-0 md:space-x-4 z-10">
+                    <a href="#onboarding" class="flow-step group w-48 text-center bg-white rounded-xl shadow-md transition-transform transform hover:scale-105 duration-300">
+                        <div class="p-6">
+                            <span class="text-2xl font-bold text-amber-600">01</span>
+                            <p class="mt-2 font-semibold text-gray-800 group-hover:text-amber-700">Onboarding</p>
+                        </div>
+                    </a>
+                    <a href="#discover" class="flow-step group w-48 text-center bg-white rounded-xl shadow-md transition-transform transform hover:scale-105 duration-300">
+                        <div class="p-6">
+                            <span class="text-2xl font-bold text-amber-600">02</span>
+                            <p class="mt-2 font-semibold text-gray-800 group-hover:text-amber-700">Discover</p>
+                        </div>
+                    </a>
+                    <a href="#engagement" class="flow-step group w-48 text-center bg-white rounded-xl shadow-md transition-transform transform hover:scale-105 duration-300">
+                        <div class="p-6">
+                            <span class="text-2xl font-bold text-amber-600">03</span>
+                            <p class="mt-2 font-semibold text-gray-800 group-hover:text-amber-700">Engagement</p>
+                        </div>
+                    </a>
+                    <a href="#projects" class="flow-step group w-48 text-center bg-white rounded-xl shadow-md transition-transform transform hover:scale-105 duration-300">
+                        <div class="p-6">
+                            <span class="text-2xl font-bold text-amber-600">04</span>
+                            <p class="mt-2 font-semibold text-gray-800 group-hover:text-amber-700">Projects</p>
+                        </div>
+                    </a>
+                    <a href="#career" class="flow-step group w-48 text-center bg-white rounded-xl shadow-md transition-transform transform hover:scale-105 duration-300">
+                        <div class="p-6">
+                            <span class="text-2xl font-bold text-amber-600">05</span>
+                            <p class="mt-2 font-semibold text-gray-800 group-hover:text-amber-700">Career</p>
+                        </div>
+                    </a>
+                    <a href="#growth" class="flow-step group w-48 text-center bg-white rounded-xl shadow-md transition-transform transform hover:scale-105 duration-300">
+                        <div class="p-6">
+                            <span class="text-2xl font-bold text-amber-600">06</span>
+                            <p class="mt-2 font-semibold text-gray-800 group-hover:text-amber-700">Long-term Growth</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div id="content-sections" class="mt-24 space-y-24">
+            
+            <section id="onboarding" class="bg-white p-8 md:p-12 rounded-xl shadow-lg animate-on-scroll">
+                <h2 class="text-2xl md:text-3xl font-bold text-amber-700">01. Onboarding</h2>
+                <p class="mt-4 text-gray-600">This initial phase is all about getting started on the platform. We've designed a simple, guided process to collect key information and align users with their goals.</p>
+                <div class="mt-8">
+                    <div class="flex justify-center mb-6">
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-amber-600 text-amber-600 font-semibold text-sm mr-4" data-target="onboarding" data-view="student">Student / Professional</button>
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-gray-300 text-gray-600 font-semibold text-sm" data-target="onboarding" data-view="company">Company / Employer</button>
+                    </div>
+                    <div class="content-view" id="onboarding-student">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">The Student Journey</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Sign up:** A quick and easy registration process.</li>
+                            <li>**Profile setup:** Students add their academic background, interests, and career goals.</li>
+                            <li>**Personalized roadmap:** The platform's AI uses this data to recommend initial skill paths.</li>
+                        </ul>
+                    </div>
+                    <div class="hidden content-view" id="onboarding-company">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">The Company Journey</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Register:** Companies create their profile and verify their details.</li>
+                            <li>**Profile setup:** They define their specific hiring needs, from short-term projects to full-time roles.</li>
+                            <li>**Define needs:** Companies can list required skills, roles, and project types.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="discover" class="bg-white p-8 md:p-12 rounded-xl shadow-lg animate-on-scroll">
+                <h2 class="text-2xl md:text-3xl font-bold text-amber-700">02. Discover Skills/Talent</h2>
+                <p class="mt-4 text-gray-600">This stage connects individuals with learning opportunities and employers with job-ready candidates. Our dashboard serves as the central hub for exploration and discovery.</p>
+                <div class="mt-8">
+                    <div class="flex justify-center mb-6">
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-amber-600 text-amber-600 font-semibold text-sm mr-4" data-target="discover" data-view="student">Student / Professional</button>
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-gray-300 text-gray-600 font-semibold text-sm" data-target="discover" data-view="company">Company / Employer</button>
+                    </div>
+                    <div class="content-view" id="discover-student">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Students</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Browse Skill Dashboard:** An intuitive dashboard displays a curated list of in-demand skills.</li>
+                            <li>**Trending skills:** Real-time data on trending skills and hiring demand.</li>
+                            <li>**Upcoming live classes:** Students can enroll in live classes and workshops to start their learning journey.</li>
+                        </ul>
+                    </div>
+                    <div class="hidden content-view" id="discover-company">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Companies</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Browse verified portfolios:** Companies browse a directory of student and professional portfolios, all of which are verified and validated by the platform.</li>
+                            <li>**Filter by skills/projects:** Advanced filters allow companies to find candidates based on specific skills, projects, or academic backgrounds.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="engagement" class="bg-white p-8 md:p-12 rounded-xl shadow-lg animate-on-scroll">
+                <h2 class="text-2xl md:text-3xl font-bold text-amber-700">03. Engagement</h2>
+                <p class="mt-4 text-gray-600">This stage is where the magic happens. We foster active participation and communication, building a vibrant ecosystem where both learning and hiring thrive.</p>
+                <div class="mt-8">
+                    <div class="flex justify-center mb-6">
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-amber-600 text-amber-600 font-semibold text-sm mr-4" data-target="engagement" data-view="student">Student / Professional</button>
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-gray-300 text-gray-600 font-semibold text-sm" data-target="engagement" data-view="company">Company / Employer</button>
+                    </div>
+                    <div class="content-view" id="engagement-student">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Students</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Join live study rooms:** Collaborative study spaces for real-time interaction.</li>
+                            <li>**Community chat:** A platform for students to connect, ask questions, and share their progress.</li>
+                            <li>**Mentorship:** Access to industry mentors for one-on-one guidance and support.</li>
+                        </ul>
+                        <div class="chart-container mt-8">
+                            <canvas id="engagementChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="hidden content-view" id="engagement-company">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Companies</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Post jobs/internships:** A simple interface to create and publish opportunities.</li>
+                            <li>**Engage with candidates:** Direct messaging and a built-in interview scheduler.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="bg-white p-8 md:p-12 rounded-xl shadow-lg animate-on-scroll">
+                <h2 class="text-2xl md:text-3xl font-bold text-amber-700">04. Projects / Output</h2>
+                <p class="mt-4 text-gray-600">The core of our platform is the emphasis on practical, project-based learning. This stage ensures every student has a tangible, verifiable output to showcase their skills.</p>
+                <div class="mt-8">
+                    <div class="flex justify-center mb-6">
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-amber-600 text-amber-600 font-semibold text-sm mr-4" data-target="projects" data-view="student">Student / Professional</button>
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-gray-300 text-gray-600 font-semibold text-sm" data-target="projects" data-view="company">Company / Employer</button>
+                    </div>
+                    <div class="content-view" id="projects-student">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Students</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Complete courses + mini-projects:** Hands-on learning ensures skills are applied.</li>
+                            <li>**Build verified portfolio:** Every project contributes to a robust, verifiable online portfolio that serves as a living resume.</li>
+                        </ul>
+                    </div>
+                    <div class="hidden content-view" id="projects-company">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Companies</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Assess portfolios:** Companies can review project-based portfolios to assess a candidate's practical skills.</li>
+                            <li>**Shortlist & interview:** The verified output provides a solid basis for shortlisting and conducting effective interviews.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="career" class="bg-white p-8 md:p-12 rounded-xl shadow-lg animate-on-scroll">
+                <h2 class="text-2xl md:text-3xl font-bold text-amber-700">05. Career / Hiring</h2>
+                <p class="mt-4 text-gray-600">This is the culmination of the journey, where our students transition from learners to earners, and companies find the talent they've been looking for.</p>
+                <div class="mt-8">
+                    <div class="flex justify-center mb-6">
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-amber-600 text-amber-600 font-semibold text-sm mr-4" data-target="career" data-view="student">Student / Professional</button>
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-gray-300 text-gray-600 font-semibold text-sm" data-target="career" data-view="company">Company / Employer</button>
+                    </div>
+                    <div class="content-view" id="career-student">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Students</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**AI Career Counselor:** Personalized guidance on career paths and opportunities.</li>
+                            <li>**Personalized roadmaps:** The AI tailors recommendations based on portfolio and progress.</li>
+                            <li>**Apply to jobs/internships:** A direct and streamlined application process.</li>
+                        </ul>
+                    </div>
+                    <div class="hidden content-view" id="career-company">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Companies</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Hire project-ready talent:** Find and hire candidates who have already proven their skills.</li>
+                            <li>**Reduce training costs:** Our talent comes with a solid foundation, significantly reducing onboarding time and costs.</li>
+                        </ul>
+                        <div class="chart-container mt-8">
+                            <canvas id="costSavingsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="growth" class="bg-white p-8 md:p-12 rounded-xl shadow-lg animate-on-scroll">
+                <h2 class="text-2xl md:text-3xl font-bold text-amber-700">06. Long-term Growth</h2>
+                <p class="mt-4 text-gray-600">Our platform is designed for sustained engagement and growth. We believe in continuous learning for students and building a long-term talent pipeline for companies.</p>
+                <div class="mt-8">
+                    <div class="flex justify-center mb-6">
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-amber-600 text-amber-600 font-semibold text-sm mr-4" data-target="growth" data-view="student">Student / Professional</button>
+                        <button class="toggle-btn px-6 py-2 rounded-full border-2 border-gray-300 text-gray-600 font-semibold text-sm" data-target="growth" data-view="company">Company / Employer</button>
+                    </div>
+                    <div class="content-view" id="growth-student">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Students</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Global networking:** Connect with peers and professionals worldwide.</li>
+                            <li>**Advanced AI recommendations:** The platform continually recommends new skills based on industry trends.</li>
+                            <li>**Continuous skill building:** A lifelong learning journey to stay relevant in a changing job market.</li>
+                        </ul>
+                    </div>
+                    <div class="hidden content-view" id="growth-company">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">For Companies</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Corporate training partnerships:** Partner with us to upskill existing employees.</li>
+                            <li>**Talent pipeline:** Build a reliable pipeline of qualified candidates for future hiring needs.</li>
+                            <li>**Retain top candidates:** Provide a continuous learning path to retain your best talent.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-white py-6 mt-16">
+        <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+            &copy; 2025 Leviora Edu. All Rights Reserved.
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartColors = {
+                primary: 'rgba(217, 119, 6, 1)',
+                primaryTransparent: 'rgba(217, 119, 6, 0.2)',
+                secondary: 'rgba(251, 191, 36, 1)',
+                danger: 'rgba(220, 38, 38, 0.7)',
+                dark: '#3D3B30',
+                gray: 'rgba(156, 163, 175, 0.2)'
+            };
+
+            const defaultChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#fff',
+                        titleColor: chartColors.dark,
+                        bodyColor: chartColors.dark,
+                        borderColor: chartColors.gray,
+                        borderWidth: 1,
+                        padding: 10
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: chartColors.dark },
+                        grid: { color: chartColors.gray }
+                    },
+                    x: {
+                        ticks: { color: chartColors.dark },
+                        grid: { display: false }
+                    }
+                }
+            };
+
+            const charts = {
+                'engagementChart': new Chart(document.getElementById('engagementChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Active Users', 'Community Engagement', 'Mentorship Sessions'],
+                        datasets: [{
+                            label: 'Metrics',
+                            data: [85, 75, 60],
+                            backgroundColor: [chartColors.primary, chartColors.secondary, chartColors.dark],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: { ...defaultChartOptions, scales: { y: { ...defaultChartOptions.scales.y, max: 100 } } }
+                }),
+                'costSavingsChart': new Chart(document.getElementById('costSavingsChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Hiring Cost Reduction', 'Training Time Reduction'],
+                        datasets: [{
+                            label: 'Savings (%)',
+                            data: [35, 60],
+                            backgroundColor: [chartColors.primary, chartColors.dark],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: { ...defaultChartOptions, scales: { y: { ...defaultChartOptions.scales.y, max: 100, ticks: { ...defaultChartOptions.scales.y.ticks, callback: v => v + '%' } } } }
+                })
+            };
+
+            const toggleButtons = document.querySelectorAll('.toggle-btn');
+            toggleButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-target');
+                    const viewType = btn.getAttribute('data-view');
+                    const container = document.getElementById(targetId);
+                    
+                    container.querySelectorAll('.content-view').forEach(view => {
+                        view.classList.add('hidden');
+                    });
+                    
+                    container.querySelectorAll('.toggle-btn').forEach(otherBtn => {
+                        otherBtn.classList.remove('border-amber-600', 'text-amber-600');
+                        otherBtn.classList.add('border-gray-300', 'text-gray-600');
+                    });
+
+                    document.getElementById(`${targetId}-${viewType}`).classList.remove('hidden');
+                    btn.classList.remove('border-gray-300', 'text-gray-600');
+                    btn.classList.add('border-amber-600', 'text-amber-600');
+                });
+            });
+
+            const flowSteps = document.querySelectorAll('.flow-step');
+            flowSteps.forEach(step => {
+                step.addEventListener('mouseenter', () => {
+                    const targetId = step.getAttribute('href').substring(1);
+                    const allSteps = document.querySelectorAll('.flow-step');
+                    allSteps.forEach(s => s.classList.remove('active'));
+                    step.classList.add('active');
+                });
+                step.addEventListener('mouseleave', () => {
+                    step.classList.remove('active');
+                });
+            });
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetId = entry.target.id;
+                        const activeLink = document.querySelector(`.flow-step[href="#${targetId}"]`);
+                        if (activeLink) {
+                            flowSteps.forEach(step => step.classList.remove('bg-amber-100', 'shadow-lg'));
+                            activeLink.classList.add('bg-amber-100', 'shadow-lg');
+                        }
+                    }
+                });
+            }, { rootMargin: '-30% 0px -30% 0px' });
+            
+            document.querySelectorAll('section[id]').forEach(sec => navObserver.observe(sec));
+            
+            const firstStep = document.querySelector('.flow-step[href="#onboarding"]');
+            if (firstStep) {
+                firstStep.classList.add('bg-amber-100', 'shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
